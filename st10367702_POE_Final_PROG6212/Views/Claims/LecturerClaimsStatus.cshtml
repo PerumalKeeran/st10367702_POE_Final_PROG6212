@@ -1,0 +1,68 @@
+﻿@model IEnumerable<st10367702_POE_Final_PROG6212.Models.Claim>
+
+@{
+    ViewData["Title"] = "My Claims Status";
+    var email = ViewBag.Email as string;
+}
+
+<h1 class="mb-4">My Claims Status</h1>
+
+<p class="text-muted">
+    Enter your email address to see all claims you have submitted and track their status.
+</p>
+
+<form asp-action="LecturerClaimsStatus" method="get" class="mb-4">
+    <div class="row g-2">
+        <div class="col-md-4">
+            <input type="email" name="email" value="@email" class="form-control" placeholder="your.email@example.com" required />
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+
+@if (!string.IsNullOrWhiteSpace(email))
+{
+    if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No claims found for <strong>@email</strong>.
+        </div>
+    }
+    else
+    {
+        <h5>Results for: @email</h5>
+        <table class="table table-striped table-bordered mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>Claim ID</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                    <th>Hours</th>
+                    <th>Total (R)</th>
+                    <th>Coordinator Approved</th>
+                    <th>Manager Approved</th>
+                    <th>Overall Status</th>
+                    <th>Submitted</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>@c.ClaimId</td>
+                        <td>@c.Month</td>
+                        <td>@c.Year</td>
+                        <td>@c.HoursWorked</td>
+                        <td>@c.TotalAmount.ToString("0.00")</td>
+                        <td>@(c.IsCoordinatorApproved ? "Yes" : "No")</td>
+                        <td>@(c.IsManagerApproved ? "Yes" : "No")</td>
+                        <td>@c.Status</td>
+                        <td>@c.SubmittedDate.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

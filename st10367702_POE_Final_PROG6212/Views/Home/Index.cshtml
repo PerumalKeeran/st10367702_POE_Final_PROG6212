@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Contract Monthly Claim System (Prototype)";
+}
+
+<div class="text-center">
+    <h1 class="display-5 mb-3">Contract Monthly Claim System (CMCS)</h1>
+    <p class="lead">
+        Prototype web application for independent contractor lecturers to submit and track monthly claims.
+    </p>
+
+    <hr />
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <h4>Lecturers</h4>
+            <p>Submit your monthly claim with hours, hourly rate, and supporting documents.</p>
+            <a class="btn btn-primary" asp-controller="Claims" asp-action="LecturerClaim">Open Lecturer Claim</a>
+        </div>
+        <div class="col-md-4">
+            <h4>Programme Coordinators</h4>
+            <p>Review submitted claims, verify details, and approve or reject them.</p>
+            <a class="btn btn-outline-primary" asp-controller="Claims" asp-action="CoordinatorDashboard">
+                Open Coordinator Dashboard
+            </a>
+        </div>
+        <div class="col-md-4">
+            <h4>HR / Administration</h4>
+            <p>View summaries of approved claims for payment processing and reporting.</p>
+            <a class="btn btn-outline-secondary" asp-controller="Claims" asp-action="HrDashboard">
+                Open HR View
+            </a>
+        </div>
+    </div>
+</div>

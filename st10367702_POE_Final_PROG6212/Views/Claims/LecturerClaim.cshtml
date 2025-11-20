@@ -1,0 +1,115 @@
+﻿@model st10367702_POE_Final_PROG6212.Models.Claim
+
+@{
+    ViewData["Title"] = "Lecturer Monthly Claim";
+}
+
+<h1 class="mb-4">Lecturer Monthly Claim</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+@if (TempData["UploadWarning"] != null)
+{
+    <div class="alert alert-warning">@TempData["UploadWarning"]</div>
+}
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="LecturerClaim" method="post" enctype="multipart/form-data">
+            <h4 class="mb-3">Lecturer Details</h4>
+
+            <div class="mb-3">
+                <label asp-for="LecturerName" class="form-label"></label>
+                <input asp-for="LecturerName" class="form-control" />
+                <span asp-validation-for="LecturerName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="LecturerEmail" class="form-label"></label>
+                <input asp-for="LecturerEmail" class="form-control" />
+                <span asp-validation-for="LecturerEmail" class="text-danger"></span>
+            </div>
+
+            <h4 class="mt-4 mb-3">Claim Details</h4>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label asp-for="Month" class="form-label"></label>
+                    <select asp-for="Month" class="form-select">
+                        <option value="">-- Select --</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <span asp-validation-for="Month" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="Year" class="form-label"></label>
+                    <input asp-for="Year" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label asp-for="HoursWorked" class="form-label"></label>
+                    <input asp-for="HoursWorked" class="form-control" />
+                    <span asp-validation-for="HoursWorked" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="HourlyRate" class="form-label"></label>
+                    <input asp-for="HourlyRate" class="form-control" />
+                    <span asp-validation-for="HourlyRate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ReviewerComments" class="form-label">Additional Notes</label>
+                <textarea asp-for="ReviewerComments" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="ReviewerComments" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Supporting Document (.pdf, .doc, .docx, .xls, .xlsx)</label>
+                <input type="file" name="supportingFile" class="form-control" />
+                <small class="form-text text-muted">
+                    Optional: upload a timesheet or any proof to support this claim.
+                </small>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">
+                Submit Claim
+            </button>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <div class="alert alert-info">
+            <h5>About this form</h5>
+            <p>
+                This form validates your inputs, calculates the total amount automatically,
+                and prevents duplicate submissions for the same month and year.
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

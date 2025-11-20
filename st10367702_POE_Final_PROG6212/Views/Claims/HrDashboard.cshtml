@@ -1,0 +1,48 @@
+﻿@model IEnumerable<st10367702_POE_Final_PROG6212.Models.Claim>
+
+@{
+    ViewData["Title"] = "HR View - Approved Claims";
+}
+
+<h1 class="mb-4">HR View – Approved Claims</h1>
+
+<p class="text-muted">
+    This view shows only approved claims. HR can use it to process payments
+    and download a CSV report for record-keeping.
+</p>
+
+<a asp-action="ExportApprovedClaimsCsv" class="btn btn-outline-primary mb-3">
+    Download Approved Claims (CSV)
+</a>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th>Lecturer</th>
+            <th>Email</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate (R)</th>
+            <th>Total Amount (R)</th>
+            <th>Submitted</th>
+            <th>Reviewed</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.LecturerName</td>
+                <td>@c.LecturerEmail</td>
+                <td>@c.Month</td>
+                <td>@c.Year</td>
+                <td>@c.HoursWorked</td>
+                <td>@c.HourlyRate.ToString("0.00")</td>
+                <td>@c.TotalAmount.ToString("0.00")</td>
+                <td>@c.SubmittedDate.ToString("yyyy-MM-dd")</td>
+                <td>@(c.ReviewedDate.HasValue? c.ReviewedDate.Value.ToString("yyyy-MM-dd") : "-")</td>
+            </tr>
+        }
+    </tbody>
+</table>
