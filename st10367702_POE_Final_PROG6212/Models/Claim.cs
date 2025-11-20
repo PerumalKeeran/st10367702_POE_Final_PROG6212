@@ -61,8 +61,6 @@ namespace st10367702_POE_Final_PROG6212.Models
         [StringLength(500)]
         public string? ReviewerComments { get; set; }
 
-        // Navigation for documents
-        public ICollection<SupportingDocument> SupportingDocuments { get; set; }
-            = new List<SupportingDocument>();
+       
     }
 }
