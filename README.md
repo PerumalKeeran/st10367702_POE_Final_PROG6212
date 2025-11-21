@@ -4,3 +4,6 @@ The Contract Monthly Claim System (CMCS) is a web application developed with ASP
 
 Summary of Lecturer Feedback 
 Throughout the development process, feedback from lecturers emphasized the necessity for two main improvements: (1) lecturers should be able to monitor the status of their submitted claims, and (2) the Coordinator and Manager require distinct approval perspectives, as both positions independently assess every claim. Both requirements were successfully implemented: a dedicated “My Claims” page now enables lecturers to check real-time statuses for all their submissions, while the workflow was enhanced to feature separate Coordinator and Manager dashboards with unique approval logic and status transitions. These enhancements reinforced the workflow logic of the system and matched the final solution with actual institutional procedures.
+
+Github link: https://github.com/PerumalKeeran/st10367702_POE_Final_PROG6212
+video link: https://screenrec.com/share/1uZDLAblco
